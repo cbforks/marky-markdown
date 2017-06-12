@@ -188,6 +188,11 @@ describe('markdown processing', function () {
       assert($('.highlight.diff').length)
     })
 
+    it('adds jsx class to jsx blocks', function () {
+      assert(~fixtures.basic.indexOf('```jsx'))
+      assert($('.highlight.jsx').length)
+    })
+
     it('wraps code highlighter output in div.highlight', function () {
       // the idea here is that we have a 1:1 correspondence of <div class='highlight'>
       // and their contained <pre class='editor'> elements coming from the highlighter
@@ -214,6 +219,10 @@ describe('markdown processing', function () {
     it('applies inline syntax highlighting classes to diffs', function () {
       assert($('.diff.inserted').length)
       assert($('.diff.deleted').length)
+    })
+
+    it('applies inline syntax highlighting classes to jsx', function () {
+      assert($('.jsx .js.keyword').length)
     })
 
     it('does not encode entities within code blocks', function () {
